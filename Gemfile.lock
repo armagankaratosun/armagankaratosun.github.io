@@ -1,6 +1,6 @@
 GEM
   specs:
-    activesupport (4.2.9)
+    activesupport (4.2.10)
       i18n (~> 0.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
@@ -16,13 +16,13 @@ GEM
     ffi (1.9.23)
     forwardable-extended (2.6.0)
     gemoji (3.0.0)
-    html-pipeline (2.7.0)
+    html-pipeline (2.7.2)
       activesupport (>= 2)
       nokogiri (>= 1.4)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    jekyll (3.7.3)
+    jekyll (3.8.0)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
@@ -55,7 +55,7 @@ GEM
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.3)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     pathutil (0.16.1)
@@ -73,7 +73,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     thread_safe (0.3.6)
-    tzinfo (1.2.3)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
 
 PLATFORMS
