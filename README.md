@@ -1,6 +1,6 @@
 # Adventures of a System Admin: A Brief History
 
-Hello dear viewer and welcome to my blog, where you can came across stuffs including, but not limited to,
+Hello dear viewer and welcome to my blog, where you can came across stuff including, but not limited to,
 
 *  Linux
 *  Ansible
