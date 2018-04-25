@@ -13,7 +13,7 @@ I am not a firm believer of god but I always want to use this quote, especially 
 
 ![God]({{site.baseurl}}/assets/img/god.jpg){:height="300px" width="500x"}
 
-Jokes aside, using Gentoo/Linux is **in fact** the sole reason why I become Linux System Administrator. I fell in love with it when I first saw the beauty in it, and I still do love it.  But the thing is, not so many people sees what I see in Linux and this makes me sad. SO thats why I started this blog.
+Jokes aside, using Gentoo/Linux is **in fact** the sole reason why I become Linux System Administrator. I fell in love with it when I first saw the beauty in it, and I still do love it.  But the thing is, not so many people sees what I see in Linux and this makes me sad. Thats why I started this blog!
 
 In here, you can came across stuffs about;
 
