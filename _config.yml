@@ -21,13 +21,7 @@ social-email: armagankaratosun@gmail.com # add your Email address
 discus-identifier: # add your discus identifier
 
 # Tracker
-analytics: <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118207841-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-118207841-1');
-</script>
+analytics: <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-118207841-1'); </script>
 
 
 # Build Settings
