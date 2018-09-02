@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>How to Setup L2TP/IPsec VPN on Ubuntu 16.04 - Adventures of a System Admin: A Brief History</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Adventures of a System Admin: A Brief History" property="og:site_name">
+  
+    <meta content="How to Setup L2TP/IPsec VPN on Ubuntu 16.04" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="How to Setup L2TP/IPsec VPN on Ubuntu 16.04 with NetworkManager." property="og:description">
+  
+  
+    <meta content="http://localhost:4000/Setup-L2TP-VPN-on-Ubuntu/" property="og:url">
+  
+  
+    <meta content="2018-09-02T22:29:00+03:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/assets/img/vpn.png" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="VPN" property="article:tag">
+    
+    <meta content="Ubuntu" property="article:tag">
+    
+    <meta content="Linux" property="article:tag">
+    
+    <meta content="L2TP" property="article:tag">
+    
+    <meta content="L2TP/IPsec" property="article:tag">
+    
+    <meta content="NetworkManager" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="How to Setup L2TP/IPsec VPN on Ubuntu 16.04">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/Setup-L2TP-VPN-on-Ubuntu/">
+  
+  
+    <meta name="twitter:description" content="How to Setup L2TP/IPsec VPN on Ubuntu 16.04 with NetworkManager.">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/assets/img/vpn.png">
+  
+
+	<meta name="description" content="How to Setup L2TP/IPsec VPN on Ubuntu 16.04 with NetworkManager.">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-touch-icon-114x114.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/avatar.png" alt="Armagan Karatosun"></a>
+      </div>
+      <div class="author-name">Armagan Karatosun</div>
+      <p>Some stuff about me, more stuff about Linux.</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">/home</h3>
+      <ul>
+        <!--
+        
+          <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        
+        
+          <li><a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+      -->
+        
+          <li class="github"><a href="http://github.com/armagankaratosun" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/in/armagan-karatosun-15941182" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        
+        
+          <li class="email"><a href="mailto:armagankaratosun@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2018 &copy; Armagan Karatosun</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    <div class="page-cover-image">
+      <img class="page-image" src=/assets/img/vpn.png alt="How to Setup L2TP/IPsec VPN on Ubuntu 16.04">
+    </div> <!-- End Page Cover Image -->
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">How to Setup L2TP/IPsec VPN on Ubuntu 16.04</h1>
+        <div class="page-date"><span>2018, Sep 02&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h1 id="how-to-setup-l2tpipsec-vpn-on-ubuntu-1604-with-networkmanager">How to Setup L2TP/IPsec VPN on Ubuntu 16.04 with NetworkManager</h1>
+
+<p>In this article, we will learn how to setup L2TP/IPsec VPN with NetworkManager on Ubuntu 16.04. Ubuntu has stopped its support on L2TP since almost forever but there are a few workarounds and alternatives to overcome this problem.</p>
+
+<h3 id="1-install-network-manager-l2tp-package">1) Install network-manager-l2tp Package</h3>
+
+<p><code class="highlighter-rouge">network-manager-l2tp</code> package can be installed with adding related PPA;</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:nm-l2tp/network-manager-l2tp  
+<span class="nb">sudo </span>apt-get update  
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>network-manager-l2tp   
+</code></pre></div></div>
+
+<p>You should also install <code class="highlighter-rouge">network-manager-l2tp-gnome</code>, if you are using gnome desktop environment.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>network-manager-l2tp-gnome
+</code></pre></div></div>
+
+<h3 id="2-stop-xl2tpd-service">2) Stop xl2tpd Service</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service xl2tpd stop
+<span class="nb">sudo </span>update-rc.d xl2tpd disable
+</code></pre></div></div>
+
+<h3 id="3-create-your-l2tpipsec-vpn">3) Create Your L2TP/IPsec VPN</h3>
+
+<p>In order to create L2TP/IPsec VPN, use the fallowing instructions;</p>
+
+<ul>
+  <li>Navigate to Settings &gt; Network &gt; Click the + button &gt; Select “Layer 2 Tunneling Protocol (L2TP)”</li>
+  <li>Name the new VPN connection something</li>
+  <li>Put the host name or address in the Gateway field.</li>
+  <li>Put username in the Username field.</li>
+  <li>Click the icon in the Password field and select your preference for how to supply the password.</li>
+  <li>Click IPSec Settings…</li>
+  <li>Click the box for “Enable IPsec tunnel to L2TP host”</li>
+  <li>Enter the shared secret into the Pre-shared key field.</li>
+  <li>Leave the Gateway ID field empty.</li>
+  <li>Expand the Advanced options area</li>
+  <li>Enter “3des-sha1-modp1024” into the Phase 1 Algorithms box.</li>
+  <li>Enter “3des-sha1” into the Phase 2 Algorithms box.</li>
+  <li>Leave the box checked for “Enforce UDP encapsulation”.</li>
+  <li>Click OK.</li>
+  <li>Click Save.</li>
+</ul>
+
+<p>And, thats it!</p>
+
+<h3 id="4-use-libreswan-instead-of-strongswan-optional">4) Use libreswan instead of strongswan (Optional)</h3>
+
+<p>If you still have problems to connect your L2TP/IPsec VPN, you can try to use libreswan instead of strongswan. For doing this, remove the phase 1 &amp; 2 algorithms in the IPsec config dialog box and install libreswan by issuing:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libreswan
+</code></pre></div></div>
+
+<p>And that’s how you can use L2TP/IPsec VPN on your Ubunut 16.04! You can use <code class="highlighter-rouge">tail -f /var/log/syslog</code> to identify problems about your connection.</p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=How to Setup L2TP/IPsec VPN on Ubuntu 16.04&url=http://localhost:4000/Setup-L2TP-VPN-on-Ubuntu/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Setup-L2TP-VPN-on-Ubuntu/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/Setup-L2TP-VPN-on-Ubuntu/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#VPN" class="tag">&#35; VPN</a>
+          
+            <a href="/tags#Ubuntu" class="tag">&#35; Ubuntu</a>
+          
+            <a href="/tags#Linux" class="tag">&#35; Linux</a>
+          
+            <a href="/tags#L2TP" class="tag">&#35; L2TP</a>
+          
+            <a href="/tags#L2TP/IPsec" class="tag">&#35; L2TP/IPsec</a>
+          
+            <a href="/tags#NetworkManager" class="tag">&#35; NetworkManager</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118207841-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118207841-1');
+</script>
+
+</body>
+</html>
