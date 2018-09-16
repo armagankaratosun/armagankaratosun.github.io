@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04 - Adventures of a System Admin: A Brief History</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Adventures of a System Admin: A Brief History" property="og:site_name">
+  
+    <meta content="How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/Setup-local-site-in-Apache-on-Ubuntu/" property="og:url">
+  
+  
+    <meta content="2018-09-16T21:37:00+03:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/assets/img/Apache-http-server.png" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="Apache" property="article:tag">
+    
+    <meta content="Ubuntu" property="article:tag">
+    
+    <meta content="Linux" property="article:tag">
+    
+    <meta content="website" property="article:tag">
+    
+    <meta content="localhost" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/Setup-local-site-in-Apache-on-Ubuntu/">
+  
+  
+    <meta name="twitter:description" content="How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/assets/img/Apache-http-server.png">
+  
+
+	<meta name="description" content="How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-touch-icon-114x114.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/avatar.png" alt="Armagan Karatosun"></a>
+      </div>
+      <div class="author-name">Armagan Karatosun</div>
+      <p>Some stuff about me, more stuff about Linux.</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">/home</h3>
+      <ul>
+        <!--
+        
+          <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        
+        
+          <li><a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+      -->
+        
+          <li class="github"><a href="http://github.com/armagankaratosun" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/in/armagan-karatosun-15941182" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        
+        
+          <li class="email"><a href="mailto:armagankaratosun@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2018 &copy; Armagan Karatosun</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    <div class="page-cover-image">
+      <img class="page-image" src=/assets/img/Apache-http-server.png alt="How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04">
+    </div> <!-- End Page Cover Image -->
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04</h1>
+        <div class="page-date"><span>2018, Sep 16&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h1 id="introduction-and-requirements">Introduction and Requirements</h1>
+
+<p>In this article, we will learn how to host multiple virtual websites with Apache on Ubuntu 16.04. I am assuming that you already have Apache server up and running but if you dont, just run <code class="highlighter-rouge">sudo apt-get install apache2</code> to install it on Ubuntu. A running Apache web server is all you need for this tutorial, but if you want actually build something in it (i.e, a nice website), then you might want to check out “LAMP stack” on Google. I also have an Ansible playbook for installing LAMP stack and can be seen in <a href="https://github.com/armagankaratosun/ansible/tree/master/ansible-lamp">here</a>. Now, let’s get down to bussiness!</p>
+
+<h3 id="1-create-vhost-configuration-file-for-apache">1) Create Vhost Configuration file for Apache</h3>
+
+<p>In order to host your website (in local or not), you have to create configuration files for Apache in related directories. To do that, create a file with the name you desired, <code class="highlighter-rouge">example1.com.conf</code> in this example, in <code class="highlighter-rouge">/etc/apache2/sites-available</code> and add the fallowing lines;</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost <span class="k">*</span>:80&gt;
+	ServerAdmin root@localhost
+    ServerName example1.localhost
+	DocumentRoot <span class="s2">"/home/</span><span class="nv">$USER</span><span class="s2">/Desktop/example1.com/public_html"</span>
+	&lt;Directory <span class="s2">"/home/</span><span class="nv">$USER</span><span class="s2">/Desktop/example1.com/public_html"</span><span class="o">&gt;</span>
+	        Order allow,deny
+	        Require all granted
+	        Allow from 127.0.0.1
+		AllowOverride All
+	&lt;/Directory&gt;
+
+	ErrorLog <span class="k">${</span><span class="nv">APACHE_LOG_DIR</span><span class="k">}</span>/example1.com_error.log
+	CustomLog <span class="k">${</span><span class="nv">APACHE_LOG_DIR</span><span class="k">}</span>/example1.com_access.log combined
+&lt;/VirtualHost&gt;
+</code></pre></div></div>
+<p>In here,</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ServerAdmin</code> = contact info of the admin.</li>
+  <li><code class="highlighter-rouge">ServerName</code>  = name of your locally hosted website.</li>
+  <li><code class="highlighter-rouge">DocumentRoot</code> = is the root directory for your webiste.</li>
+  <li><code class="highlighter-rouge">Directory</code> = is used to enclose a group of directives that will apply.</li>
+  <li><code class="highlighter-rouge">ErrorLog</code> = is where error logs are stored.</li>
+  <li><code class="highlighter-rouge">CustomLog</code> = is where access logs are stored.</li>
+  <li><code class="highlighter-rouge">$USER</code> = is your username, change it with your actual username.</li>
+</ul>
+
+<p>You can modify this configuration file as you wish, but just make sure that the file is owned by the root user and group.</p>
+
+<h3 id="2-make-your-site-availble-with-a2ensite">2) Make Your Site Availble with <code class="highlighter-rouge">a2ensite</code></h3>
+
+<p>We have to copy our new configuration file to <code class="highlighter-rouge">/etc/apache2/sites-enabled</code> directory to enable it but in Apache, we have tool for that called <code class="highlighter-rouge">a2ensite</code>. While you making your site avaible with <code class="highlighter-rouge">a2ensite</code>, you might want to disable default Apache web page and configuration with <code class="highlighter-rouge">a2dissite</code> and reload the Apache configuration. So in summary;</p>
+
+<ul>
+  <li><code class="highlighter-rouge">sudo a2ensite example1.com.conf</code> to enable your site.</li>
+  <li>Disable default Apache web page and configuration with <code class="highlighter-rouge">sudo a2dissite 000-default</code></li>
+  <li><code class="highlighter-rouge">sudo service apache2 reload</code> (or <code class="highlighter-rouge">sudo systemctl reload apache2.service</code>) to reload Apache Web Server</li>
+</ul>
+
+<p>to proceed.</p>
+
+<h3 id="3-edit-your-etchosts-file">3) Edit Your <code class="highlighter-rouge">/etc/hosts</code> File</h3>
+
+<p>To view your website in your favorite web browser, just edit your <code class="highlighter-rouge">/etc/hosts</code> file and add  <code class="highlighter-rouge">example1.localhost</code> in it. After that, just create an helloworld file as your index (for example; index.html) in your website directory, open your browser and go to http://example1.localhost. You should see the helloworld page that you crated.</p>
+
+<p>Example <code class="highlighter-rouge">/etc/hosts</code> file;</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1	localhost
+127.0.0.1 	example1.localhost
+</code></pre></div></div>
+
+<p>Example helloworld <code class="highlighter-rouge">index.html</code> file;</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;header&gt;&lt;title&gt;</span>This is title<span class="nt">&lt;/title&gt;&lt;/header&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+Hello world
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>And you are ready to go! Just repeat these steps to host multiple local websites with Apache.</p>
+
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=How to Use Apache Virtual Host to Run Multiple Local Websites on Ubuntu 16.04&url=http://localhost:4000/Setup-local-site-in-Apache-on-Ubuntu/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Setup-local-site-in-Apache-on-Ubuntu/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/Setup-local-site-in-Apache-on-Ubuntu/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#Apache" class="tag">&#35; Apache</a>
+          
+            <a href="/tags#Ubuntu" class="tag">&#35; Ubuntu</a>
+          
+            <a href="/tags#Linux" class="tag">&#35; Linux</a>
+          
+            <a href="/tags#website" class="tag">&#35; website</a>
+          
+            <a href="/tags#localhost" class="tag">&#35; localhost</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118207841-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118207841-1');
+</script>
+
+</body>
+</html>
