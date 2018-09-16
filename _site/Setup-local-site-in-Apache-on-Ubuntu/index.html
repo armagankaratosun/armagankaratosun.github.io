@@ -138,11 +138,11 @@
       </header>
       <h1 id="introduction-and-requirements">Introduction and Requirements</h1>
 
-<p>In this article, we will learn how to host multiple virtual websites with Apache on Ubuntu 16.04. I am assuming that you already have Apache server up and running but if you dont, just run <code class="highlighter-rouge">sudo apt-get install apache2</code> to install it on Ubuntu. A running Apache web server is all you need for this tutorial, but if you want actually build something in it (i.e, a nice website), then you might want to check out “LAMP stack” on Google. I also have an Ansible playbook for installing LAMP stack and can be seen in <a href="https://github.com/armagankaratosun/ansible/tree/master/ansible-lamp">here</a>. Now, let’s get down to bussiness!</p>
+<p>In this article, we will learn how to host multiple virtual websites with Apache on Ubuntu 16.04. I am assuming that you already have Apache server up and running but if you don’t, just run <code class="highlighter-rouge">sudo apt-get install apache2</code> to install it on Ubuntu. A running Apache web server is all you need for this tutorial, but if you want actually build something in it (i.e, a nice website), then you might want to check out “LAMP stack” on Google. I also have an Ansible playbook for installing LAMP stack and can be seen in <a href="https://github.com/armagankaratosun/ansible/tree/master/ansible-lamp">here</a>. Now, let’s get down to business!</p>
 
 <h3 id="1-create-vhost-configuration-file-for-apache">1) Create Vhost Configuration file for Apache</h3>
 
-<p>In order to host your website (in local or not), you have to create configuration files for Apache in related directories. To do that, create a file with the name you desired, <code class="highlighter-rouge">example1.com.conf</code> in this example, in <code class="highlighter-rouge">/etc/apache2/sites-available</code> and add the fallowing lines;</p>
+<p>In order to host your website (in local or not), you have to create configuration files for Apache in related directories. To do that, create a file with the name you desired, <code class="highlighter-rouge">example1.com.conf</code> in this example, in <code class="highlighter-rouge">/etc/apache2/sites-available</code> and add the following lines;</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost <span class="k">*</span>:80&gt;
 	ServerAdmin root@localhost
@@ -173,9 +173,9 @@
 
 <p>You can modify this configuration file as you wish, but just make sure that the file is owned by the root user and group.</p>
 
-<h3 id="2-make-your-site-availble-with-a2ensite">2) Make Your Site Availble with <code class="highlighter-rouge">a2ensite</code></h3>
+<h3 id="2-make-your-site-available-with-a2ensite">2) Make Your Site Available with <code class="highlighter-rouge">a2ensite</code></h3>
 
-<p>We have to copy our new configuration file to <code class="highlighter-rouge">/etc/apache2/sites-enabled</code> directory to enable it but in Apache, we have tool for that called <code class="highlighter-rouge">a2ensite</code>. While you making your site avaible with <code class="highlighter-rouge">a2ensite</code>, you might want to disable default Apache web page and configuration with <code class="highlighter-rouge">a2dissite</code> and reload the Apache configuration. So in summary;</p>
+<p>We have to copy our new configuration file to <code class="highlighter-rouge">/etc/apache2/sites-enabled</code> directory to enable it but in Apache, we have tool for that called <code class="highlighter-rouge">a2ensite</code>. While you making your site available with <code class="highlighter-rouge">a2ensite</code>, you might want to disable default Apache web page and configuration with <code class="highlighter-rouge">a2dissite</code> and reload the Apache configuration. So in summary;</p>
 
 <ul>
   <li><code class="highlighter-rouge">sudo a2ensite example1.com.conf</code> to enable your site.</li>
@@ -187,7 +187,7 @@
 
 <h3 id="3-edit-your-etchosts-file">3) Edit Your <code class="highlighter-rouge">/etc/hosts</code> File</h3>
 
-<p>To view your website in your favorite web browser, just edit your <code class="highlighter-rouge">/etc/hosts</code> file and add  <code class="highlighter-rouge">example1.localhost</code> in it. After that, just create an helloworld file as your index (for example; index.html) in your website directory, open your browser and go to http://example1.localhost. You should see the helloworld page that you crated.</p>
+<p>To view your website in your favorite web browser, just edit your <code class="highlighter-rouge">/etc/hosts</code> file and add  <code class="highlighter-rouge">example1.localhost</code> in it. After that, just create an helloworld file as your index (for example; index.html) in your website directory, open your browser and go to http://example1.localhost. You should see the helloworld page that you created.</p>
 
 <p>Example <code class="highlighter-rouge">/etc/hosts</code> file;</p>
 

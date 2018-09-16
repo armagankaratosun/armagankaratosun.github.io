@@ -9,11 +9,11 @@ tags: [Apache, Ubuntu, Linux, website, localhost] # add tag
 
 # Introduction and Requirements 
 
-In this article, we will learn how to host multiple virtual websites with Apache on Ubuntu 16.04. I am assuming that you already have Apache server up and running but if you dont, just run ``sudo apt-get install apache2`` to install it on Ubuntu. A running Apache web server is all you need for this tutorial, but if you want actually build something in it (i.e, a nice website), then you might want to check out "LAMP stack" on Google. I also have an Ansible playbook for installing LAMP stack and can be seen in [here](https://github.com/armagankaratosun/ansible/tree/master/ansible-lamp). Now, let's get down to bussiness!
+In this article, we will learn how to host multiple virtual websites with Apache on Ubuntu 16.04. I am assuming that you already have Apache server up and running but if you don't, just run ``sudo apt-get install apache2`` to install it on Ubuntu. A running Apache web server is all you need for this tutorial, but if you want actually build something in it (i.e, a nice website), then you might want to check out "LAMP stack" on Google. I also have an Ansible playbook for installing LAMP stack and can be seen in [here](https://github.com/armagankaratosun/ansible/tree/master/ansible-lamp). Now, let's get down to business!
 
 ### 1) Create Vhost Configuration file for Apache
 
-In order to host your website (in local or not), you have to create configuration files for Apache in related directories. To do that, create a file with the name you desired, ``example1.com.conf`` in this example, in ``/etc/apache2/sites-available`` and add the fallowing lines;
+In order to host your website (in local or not), you have to create configuration files for Apache in related directories. To do that, create a file with the name you desired, ``example1.com.conf`` in this example, in ``/etc/apache2/sites-available`` and add the following lines;
 
 ```bash
 <VirtualHost *:80>
@@ -43,9 +43,9 @@ In here,
 
 You can modify this configuration file as you wish, but just make sure that the file is owned by the root user and group.
 
-### 2) Make Your Site Availble with ```a2ensite```
+### 2) Make Your Site Available with ```a2ensite```
 
-We have to copy our new configuration file to ```/etc/apache2/sites-enabled``` directory to enable it but in Apache, we have tool for that called ```a2ensite```. While you making your site avaible with ```a2ensite```, you might want to disable default Apache web page and configuration with ``a2dissite`` and reload the Apache configuration. So in summary;
+We have to copy our new configuration file to ```/etc/apache2/sites-enabled``` directory to enable it but in Apache, we have tool for that called ```a2ensite```. While you making your site available with ```a2ensite```, you might want to disable default Apache web page and configuration with ``a2dissite`` and reload the Apache configuration. So in summary;
 
 * ``sudo a2ensite example1.com.conf`` to enable your site.
 * Disable default Apache web page and configuration with ``sudo a2dissite 000-default``
@@ -55,7 +55,7 @@ to proceed.
 
 ### 3) Edit Your ``/etc/hosts`` File
 
-To view your website in your favorite web browser, just edit your ``/etc/hosts`` file and add  ``example1.localhost`` in it. After that, just create an helloworld file as your index (for example; index.html) in your website directory, open your browser and go to http://example1.localhost. You should see the helloworld page that you crated.
+To view your website in your favorite web browser, just edit your ``/etc/hosts`` file and add  ``example1.localhost`` in it. After that, just create an helloworld file as your index (for example; index.html) in your website directory, open your browser and go to http://example1.localhost. You should see the helloworld page that you created.
 
 Example ``/etc/hosts`` file;
 
