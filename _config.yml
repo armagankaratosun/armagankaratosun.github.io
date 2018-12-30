@@ -4,7 +4,7 @@ description: > # this means to ignore newlines until "baseurl:"
   of a system admin while he tries to become DevOps Engineer.
 permalink: ':title/'
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://armagankaratosun.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 site-twitter: #if your site has a twitter account, enter it here
 
 # Author Settings
