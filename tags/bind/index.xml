@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BIND on Adventures of a System Admin: A Brief History</title>
+    <link>https://armagankaratosun.github.io/tags/bind/</link>
+    <description>Recent content in BIND on Adventures of a System Admin: A Brief History</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 16 May 2018 09:01:00 +0300</lastBuildDate>
+    
+	<atom:link href="https://armagankaratosun.github.io/tags/bind/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DNS Clustering with Plesk Windows &amp; cPanel DNSONLY</title>
+      <link>https://armagankaratosun.github.io/post/2018-05-16-plesk-windows-with-cpanel-dnsonly/</link>
+      <pubDate>Wed, 16 May 2018 09:01:00 +0300</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/post/2018-05-16-plesk-windows-with-cpanel-dnsonly/</guid>
+      <description>How to use Plesk Slave DNS Manager with cPanel DNSONLY Plesk and cPanel are the main tools for hosting platforms nowadays. While both of them are very good and solid in Linux, Plesk is the only option when it comes to Windows, so one may have to use both tools to manage his/her hosting servers. Using two different tools on two different platforms (Windows and Linux) requires different bits of knowledge and sometimes, more resources.</description>
+    </item>
+    
+  </channel>
+</rss>

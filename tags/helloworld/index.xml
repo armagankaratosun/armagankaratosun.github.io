@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HelloWorld on Adventures of a System Admin: A Brief History</title>
+    <link>https://armagankaratosun.github.io/tags/helloworld/</link>
+    <description>Recent content in HelloWorld on Adventures of a System Admin: A Brief History</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Tue, 24 Apr 2018 14:46:00 +0300</lastBuildDate>
+    
+	<atom:link href="https://armagankaratosun.github.io/tags/helloworld/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World!</title>
+      <link>https://armagankaratosun.github.io/post/hello_world/2018-04-24-hello-world/</link>
+      <pubDate>Tue, 24 Apr 2018 14:46:00 +0300</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/post/hello_world/2018-04-24-hello-world/</guid>
+      <description>And God said, &amp;ldquo;Let there be light,&amp;rdquo; I am not a firm believer of god but I always want to use this quote, especially when I work on something related to Linux or computers in general. Using Linux is in fact like being a god, a god who mounts disks, a god who send its petty users to /dev/null and a god who sees and who deletes. I will always remember the first time when I install Gentoo/Linux.</description>
+    </item>
+    
+  </channel>
+</rss>

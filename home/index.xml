@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homes on Adventures of a System Admin: A Brief History</title>
+    <link>https://armagankaratosun.github.io/home/</link>
+    <description>Recent content in Homes on Adventures of a System Admin: A Brief History</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0300</lastBuildDate>
+    
+	<atom:link href="https://armagankaratosun.github.io/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://armagankaratosun.github.io/home/about/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0300</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/home/about/</guid>
+      <description>About Me My name is Armağan Karatosun and I am a PhD student at Istanbul Technical University. In addition to that, I work as a System Administrator at Turkish Economy Bank (entity of BNP Paribas). My key values are;
+ I believe learning is a lifelong endeavor. I have strong ability to learn on my own and take in new information and ideas. I am willing to attend and/or speak at industry conferences and share my knowledge with others.</description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>https://armagankaratosun.github.io/home/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/home/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Posts</title>
+      <link>https://armagankaratosun.github.io/home/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0300</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/home/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://armagankaratosun.github.io/home/projects/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0300</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/home/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Custom Section</title>
+      <link>https://armagankaratosun.github.io/home/teaching/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0300</pubDate>
+      
+      <guid>https://armagankaratosun.github.io/home/teaching/</guid>
+      <description>This is an example of using the custom widget to create your own homepage section.
+To remove this section, either delete content/home/teaching.md or edit the frontmatter of the file to deactivate the widget by setting active = false.</description>
+    </item>
+    
+  </channel>
+</rss>
